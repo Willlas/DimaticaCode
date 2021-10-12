@@ -4,6 +4,7 @@ using Dimatica.Entities.Interfaces.Repositories;
 using Dimatica.Entities.DTOs;
 using System.Collections.Generic;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace Dimatica.Repositories
 {
@@ -32,8 +33,7 @@ namespace Dimatica.Repositories
         public List<BaseDTO> Retrieve(PaginationDTO pagination)
         {
             var collection = _dataBase.GetCollection<BaseDTO>(pagination.Entity);
-
-            return collection.Find( );
+            return collection.Find(new BsonDocument()).ToList();
         }
 
         public BaseDTO Update(BaseDTO entity)
