@@ -1,3 +1,8 @@
+using AutoMapper;
+using Dimatica.Entities.Interfaces.Repositories;
+using Dimatica.Entities.Interfaces.Services;
+using Dimatica.Repositories;
+using Dimatica.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +31,16 @@ namespace Dimatica
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                
+            });
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddScoped<IDutyService, DutyService>();
+            services.AddScoped<IDutyRepository, DutyRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

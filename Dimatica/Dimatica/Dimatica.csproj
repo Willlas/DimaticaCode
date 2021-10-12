@@ -31,6 +31,8 @@
 
   <ItemGroup>
     <Folder Include="Automapper\Profiles\" />
+    <Folder Include="ClientApp\src\app\duty\components\" />
+    <Folder Include="ClientApp\src\app\duty\services\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

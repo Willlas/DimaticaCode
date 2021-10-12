@@ -20,7 +20,7 @@ namespace Dimatica.Controllers
         [HttpGet]
         public List<DutyDTO> Get()
         {
-            var dto = new PaginationDTO();
+            var dto = new PaginationDTO() { Entity = "duty"};
             return _dutyService.Retrieve(dto);
         }
 

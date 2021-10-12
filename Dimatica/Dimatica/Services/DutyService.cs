@@ -15,8 +15,7 @@ namespace Dimatica.Services
         public DutyService(
             IDutyRepository dutyRepository,
             IMapper mapper
-        ) 
-        {
+        ) {
             _mapper = mapper;
             _dutyRepository = dutyRepository;
         }
