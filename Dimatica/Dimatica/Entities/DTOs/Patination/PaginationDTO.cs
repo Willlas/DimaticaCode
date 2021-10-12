@@ -6,6 +6,7 @@ namespace Dimatica.Entities.DTOs
 {
     public class PaginationDTO : BaseDTO
     {
+        public string Entity { get; set; }
         public int StartAt { get; set; }
         public int Get { get; set; }
         public ConditionDTO Conditions { get; set; }
