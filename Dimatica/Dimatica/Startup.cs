@@ -1,4 +1,5 @@
 using AutoMapper;
+using Dimatica.Automapper.Profiles;
 using Dimatica.Entities.Interfaces.Repositories;
 using Dimatica.Entities.Interfaces.Services;
 using Dimatica.Repositories;
@@ -34,7 +35,7 @@ namespace Dimatica
 
             var mapperConfig = new MapperConfiguration(mc =>
             {
-                
+                mc.AddProfile(new DutyProfile());
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);

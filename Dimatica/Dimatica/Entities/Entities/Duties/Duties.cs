@@ -1,12 +1,13 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Dimatica.Entities.Entities.Duties
 {
     public class Duties
     {
-        [BsonElement("Id")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        [BsonElement("Name")]
+        [BsonElement("name")]
         public string Name { get; set; }
     }
 }

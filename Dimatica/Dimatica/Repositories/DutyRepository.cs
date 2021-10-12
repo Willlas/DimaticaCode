@@ -42,7 +42,8 @@ namespace Dimatica.Repositories
         public List<Duties> Retrieve(PaginationDTO pagination)
         {
             var collection = _dataBase.GetCollection<Duties>(pagination.Entity);
-            return collection.Find(new BsonDocument()).ToList();
+            var response = collection.Find(new BsonDocument()).ToList();
+            return response;
         }
 
         public Duties Update(Duties entity)
