@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Dimatica.Entities.Interfaces.Services
 {
-    interface IDutyService
+    public interface IDutyService
     {
         public DutyDTO Create(DutyDTO dto);
         public List<DutyDTO> Retrieve(PaginationDTO dto);

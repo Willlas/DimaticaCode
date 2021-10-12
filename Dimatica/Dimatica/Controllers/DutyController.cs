@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using Dimatica.Entities.DTOs;
+using Dimatica.Entities.DTOs.Duties;
+using Dimatica.Entities.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dimatica.Controllers
@@ -11,36 +10,48 @@ namespace Dimatica.Controllers
     [ApiController]
     public class DutyController : ControllerBase
     {
+        private IDutyService _dutyService;
+        public DutyController(
+            IDutyService dutyService
+        ) {
+            _dutyService = dutyService;
+        }
         // GET: api/Duty
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<DutyDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            var dto = new PaginationDTO();
+            return _dutyService.Retrieve(dto);
         }
 
         // GET: api/Duty/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public List<DutyDTO> Get(int id)
         {
-            return "value";
+            var dto = new PaginationDTO();
+            return _dutyService.Retrieve(dto);
         }
 
         // POST: api/Duty
         [HttpPost]
-        public void Post([FromBody] string value)
+        public DutyDTO Post([FromBody] DutyDTO dto)
         {
+            return _dutyService.Create(dto);
         }
 
         // PUT: api/Duty/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public DutyDTO Put([FromBody] DutyDTO dto)
         {
+            return _dutyService.Update(dto);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public bool Delete([FromBody] DutyDTO dto)
         {
+            return _dutyService.Delete(dto);
         }
+
     }
 }
