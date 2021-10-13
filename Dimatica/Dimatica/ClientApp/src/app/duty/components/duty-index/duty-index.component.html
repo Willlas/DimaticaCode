@@ -1,1 +1,3 @@
-<p>duty-index works!</p>
+<input type="text" [(ngModel)]="newDuty" />
+<button (click)="createDuty()">Button</button>
+<app-duty-table [dutyList]="dutyList"></app-duty-table>

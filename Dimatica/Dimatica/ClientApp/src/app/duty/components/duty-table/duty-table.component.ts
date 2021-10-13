@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DutyDto } from '../../interfaces/duty.dto.interface';
 
 @Component({
   selector: 'app-duty-table',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DutyTableComponent implements OnInit {
 
+  @Input() public dutyList: DutyDto[]; 
+
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
 }

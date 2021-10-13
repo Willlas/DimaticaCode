@@ -1,4 +1,4 @@
 export interface DutyDto {
-    Id: string;
-    Name: string;
+    id?: string;
+    name: string;
 }

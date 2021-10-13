@@ -1,1 +1,11 @@
-<p>duty-table works!</p>
+<table class="duty-table">
+  <thead>
+      <th>Groups Name</th>
+      <th>Groups Items</th>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let duty of dutyList">
+      <tr><td>{{duty.id}}</td><td>{{duty.name}}</td></tr>
+    </ng-container>
+  </tbody>
+</table>

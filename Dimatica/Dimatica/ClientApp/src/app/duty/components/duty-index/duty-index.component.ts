@@ -10,11 +10,22 @@ import { DutyService } from '../../services/duty.service';
 export class DutyIndexComponent implements OnInit {
 
   public dutyList: DutyDto[];
+  public newDuty: string;
 
   constructor(private dutyService: DutyService) { }
 
   public async ngOnInit(): Promise<void> {
-    this.dutyList = await this.dutyService.get();
+    await this.setDutyList();
   }
 
+  public async createDuty(): Promise<void> {
+    const duty: DutyDto = { name : this.newDuty };
+    await this.dutyService.create(duty);
+    alert("duty created");
+    this.newDuty = "";
+    this.setDutyList();
+  }
+  private async setDutyList(): Promise<void> {
+    this.dutyList = await this.dutyService.get();
+  }
 }
