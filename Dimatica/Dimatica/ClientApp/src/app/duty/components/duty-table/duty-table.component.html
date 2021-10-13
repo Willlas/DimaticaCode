@@ -1,11 +1,19 @@
 <table class="duty-table">
   <thead>
-      <th>Groups Name</th>
-      <th>Groups Items</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Action</th>
   </thead>
   <tbody>
     <ng-container *ngFor="let duty of dutyList">
-      <tr><td>{{duty.id}}</td><td>{{duty.name}}</td></tr>
+      <tr>
+        <td>{{duty.id}}</td>
+        <td>{{duty.name}}</td>
+        <td>
+          <button (click)="updateItem(duty.id)">update</button>
+          <button (click)="deleteItem(duty.id)">delete</button>
+        </td>
+      </tr>
     </ng-container>
   </tbody>
 </table>

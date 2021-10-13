@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DutyDto } from '../../interfaces/duty.dto.interface';
 
 @Component({
@@ -8,11 +8,20 @@ import { DutyDto } from '../../interfaces/duty.dto.interface';
 })
 export class DutyTableComponent implements OnInit {
 
-  @Input() public dutyList: DutyDto[]; 
+  @Input() public dutyList: DutyDto[];
 
+  @Output() public onupdate = new EventEmitter<string>();
+  @Output() public ondelete = new EventEmitter<string>();
   constructor() { }
 
   public ngOnInit(): void {
   }
 
+  public updateItem(id: string): void {
+    this.onupdate.emit(id);
+  }
+
+  public deleteItem(id: string): void {
+    this.ondelete.emit(id);
+  }
 }

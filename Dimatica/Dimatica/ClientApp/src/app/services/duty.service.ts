@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import { DutyDto } from '../duty/interfaces/duty.dto.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,19 @@ export class DutyApiService {
 
   constructor(private apiService: ApiService) { }
 
-  public async get<DutyDto>(): Promise<DutyDto[]> {
+  public async get(): Promise<DutyDto[]> {
     return await this.apiService.get(this.baseUri);
   }
 
-  public async create<DutyDto>(body: DutyDto): Promise<DutyDto> {
+  public async create(body: DutyDto): Promise<DutyDto> {
     return await this.apiService.post(this.baseUri, body);
   }
 
-  public async update<DutyDto>(body: DutyDto): Promise<DutyDto> {
-    return await this.apiService.put(this.baseUri, body);
+  public async update(body: DutyDto): Promise<DutyDto> {
+    return await this.apiService.put(this.baseUri+'/'+body.id, body);
   }
 
-  public async delete<DutyDto>(): Promise<DutyDto[]> {
-    return await this.apiService.delete(this.baseUri);
+  public async delete(id: string): Promise<boolean> {
+    return await this.apiService.delete(this.baseUri + '/' + id);
   }
 }

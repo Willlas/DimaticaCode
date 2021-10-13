@@ -30,18 +30,17 @@ namespace Dimatica.Services
         {
             return _mapper.Map<List<DutyDTO>>(_dutyRepository.Retrieve(dto));
         }
-
-        public bool Delete(DutyDTO dto)
-        {
-
-            var dutie = _mapper.Map<Duties>(dto);
-            return _dutyRepository.Delete(dutie);
-        }
-      
         public DutyDTO Update(DutyDTO dto)
         {
             var dutie = _mapper.Map<Duties>(dto);
             return _mapper.Map<DutyDTO>(_dutyRepository.Update(dutie));
         }
+
+        public bool Delete(string id)
+        {
+            
+            return _dutyRepository.Delete(id);
+        }
+
     }
 }

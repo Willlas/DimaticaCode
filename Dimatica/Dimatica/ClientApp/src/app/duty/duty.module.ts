@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DutyRoutingModule } from './duty-routing.module';
 import { DutyIndexComponent } from './components/duty-index/duty-index.component';
 import { DutyTableComponent } from './components/duty-table/duty-table.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     DutyRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
      
   ]
 })

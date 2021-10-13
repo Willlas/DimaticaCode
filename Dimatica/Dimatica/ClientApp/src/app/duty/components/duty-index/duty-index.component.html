@@ -1,3 +1,11 @@
-<input type="text" [(ngModel)]="newDuty" />
+
+  <form *ngIf="!!dutyControl" [formGroup]="dutyControl">
+    <input type="text" formControlName="dutyInput" />
+    <span *ngIf="this.dutyControl.get('dutyInput').hasError('required')"> filed required </span>
+    <span *ngIf="this.dutyControl.get('dutyInput').hasError('minlength')"> 4 required </span>
+  </form>
 <button (click)="createDuty()">Button</button>
-<app-duty-table [dutyList]="dutyList"></app-duty-table>
+<app-duty-table
+                [dutyList]="dutyList"
+                (onupdate)="updateDuty($event)"
+                (ondelete)="deleteDuty($event)"></app-duty-table>

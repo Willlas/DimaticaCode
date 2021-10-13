@@ -31,13 +31,9 @@ namespace Dimatica.Repositories
             return entity;
         }
 
-        public bool Delete(Duties entity)
-        {
-            var collection = _dataBase.GetCollection<Duties>("Duties");
-            var deleteFilter = Builders<Duties>.Filter.Eq("id", entity.Id);
-            collection.DeleteOne(deleteFilter);
-            return true;
-        }
+       
+
+        
 
         public List<Duties> Retrieve(PaginationDTO pagination)
         {
@@ -49,10 +45,22 @@ namespace Dimatica.Repositories
         public Duties Update(Duties entity)
         {
             var collection = _dataBase.GetCollection<Duties>("Duties");
-            var updateFilter = Builders<Duties>.Filter.Eq("id", entity.Id);
+            var updateFilter = Builders<Duties>.Filter.Eq("_id", new BsonObjectId(new ObjectId(entity.Id)));
             var updateDefinition = Builders<Duties>.Update.Set("name", entity.Name);
             collection.UpdateOne(updateFilter, updateDefinition);
             return entity;
+        }
+        public bool Delete(string id)
+        {
+            var collection = _dataBase.GetCollection<Duties>("Duties");
+            var deleteFilter = Builders<Duties>.Filter.Eq("_id", new BsonObjectId(new ObjectId(id)));
+            collection.DeleteOne(deleteFilter);
+            return true;
+        }
+
+        public bool Delete(Duties entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

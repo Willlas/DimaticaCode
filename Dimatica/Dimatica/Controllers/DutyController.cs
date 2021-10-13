@@ -48,9 +48,9 @@ namespace Dimatica.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public bool Delete([FromBody] DutyDTO dto)
+        public bool Delete(string id)
         {
-            return _dutyService.Delete(dto);
+            return _dutyService.Delete(id);
         }
 
     }

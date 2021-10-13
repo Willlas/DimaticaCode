@@ -19,33 +19,33 @@ export class ApiService {
     @Inject('BASE_URL') baseUrl: string
   ) { }
 
-  public async get<T>(uri: string): Promise<T> {
+  public async get(uri: string): Promise<any[]> {
     try {
-      return await this.httpClient.get<T>(`api/${uri}`, this.httpOptions).toPromise();
+      return await this.httpClient.get(`api/${uri}`, this.httpOptions).toPromise() as any[];
     } catch (e) {
       console.log(e);
     }
   }
 
-  public async post<T>(uri: string, body: any): Promise<T> {
+  public async post(uri: string, body: any): Promise<any> {
     try {
-      return await this.httpClient.post<T>(`api/${uri}`, JSON.stringify(body), this.httpOptions).toPromise();
+      return await this.httpClient.post(`api/${uri}`, JSON.stringify(body), this.httpOptions).toPromise();
     } catch (e) {
       console.log(e);
     }
   }
 
-  public async put<T>(uri: string, body: any): Promise<T> {
+  public async put(uri: string, body: any): Promise<any> {
     try {
-      return await this.httpClient.put<T>(`api/${uri}`, JSON.stringify(body), this.httpOptions).toPromise();
+      return await this.httpClient.put(`api/${uri}`, JSON.stringify(body), this.httpOptions).toPromise();
     } catch (e) {
       console.log(e);
     }
   }
 
-  public async delete<T>(uri: string): Promise<T> {
+  public async delete(uri: string): Promise<any> {
     try {
-      return await this.httpClient.delete<T>(`api/${uri}`, this.httpOptions).toPromise();
+      return await this.httpClient.delete<any>(`api/${uri}`, this.httpOptions).toPromise();
     } catch (e) {
       console.log(e);
     }
